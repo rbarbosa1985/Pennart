@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -31,10 +32,14 @@ public class Painting implements Serializable {
 	private Integer year;
 	private String dimensions;
 	private Double valor;
-	//Relacionamento
-	private Long id_category;
-	//Relacionamento
-	private Long id_series;
+	
+	@ManyToOne()
+	@JoinColumn(name="id_categoria")
+	private Category categoria;
+	
+	@ManyToOne()
+	@JoinColumn(name="id_series")
+	private Series series;
 	
 	@ManyToMany
 	@JoinTable(name = "tb_painting_technique",
@@ -52,18 +57,21 @@ public class Painting implements Serializable {
 	public Painting() {
 		
 	}
+	
 	public Painting(Long id, String title, String description, Integer year, String dimensions, Double valor,
-			Long id_category, Long id_series) {
+			Category categoria, Series series) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.year = year;
 		this.dimensions = dimensions;
 		this.valor = valor;
-		this.id_category = id_category;
-		this.id_series = id_series;
+		this.categoria = categoria;
+		this.series = series;
 	}
-	
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -112,20 +120,20 @@ public class Painting implements Serializable {
 		this.valor = valor;
 	}
 	
-	public Long getId_category() {
-		return id_category;
+	public Category getCategoria() {
+		return categoria;
 	}
 	
-	public void setId_category(Long id_category) {
-		this.id_category = id_category;
+	public void setCategoria(Category categoria) {
+		this.categoria = categoria;
 	}
 	
-	public Long getId_series() {
-		return id_series;
+	public Series getSeries() {
+		return series;
 	}
 	
-	public void setId_series(Long id_series) {
-		this.id_series = id_series;
+	public void setSeries(Series series) {
+		this.series = series;
 	}
 	
 	@PrePersist

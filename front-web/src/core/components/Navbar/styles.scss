@@ -1,0 +1,46 @@
+.main-nav {
+     height: 70px;
+     color: #FFF;
+     align-items: center;
+     padding-left: 40px;
+     padding-right: 40px;
+     margin-left: 0;
+     margin-right: 0;
+     background-color: purple;
+     filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.5));
+}
+
+.nav-logo-text {
+     color: #FFF;
+}
+
+.main-menu {
+     display: flex;
+     /*
+     li:nth-child(2){
+          //margin-left: 85px;
+          //margin-right: 85px;
+     }*/
+
+     li{
+          margin-right: 20px;
+     }
+
+     justify-content: center;
+}
+
+
+.nav-link {
+     font-size: 18px;
+     font-style: normal;
+     color: rgba(255, 255, 255, 0.5);
+
+     &.active {
+          font-weight: bold;
+          color: #FFF;
+     }
+
+     &:hover{
+          color: #FFF;
+     }
+}
